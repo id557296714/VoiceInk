@@ -1,3 +1,9 @@
+## This Fork Features
+
+- **Lowercase before paste** - more casual and natural text
+
+---
+
 <div align="center">
   <img src="VoiceInk/Assets.xcassets/AppIcon.appiconset/256-mac.png" width="180" height="180" />
   <h1>VoiceInk</h1>
@@ -21,10 +27,6 @@
 ---
 
 VoiceInk is a native macOS application that transcribes what you say to text almost instantly. You can find all the information and download the app from [here](https://tryvoiceink.com). 
-
-## This Fork Features
-
-- **Lowercase before paste** - more casual and natural text
 
 ![VoiceInk Mac App](https://github.com/user-attachments/assets/12367379-83e7-48a6-b52c-4488a6a04bba)
 
