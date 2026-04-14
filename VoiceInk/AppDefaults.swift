@@ -24,6 +24,7 @@ enum AppDefaults {
             "IsVADEnabled": true,
             "RemoveFillerWords": true,
             "LowercaseTranscription": false,
+            "RemoveTrailingPeriodForSingleSentence": false,
             "SelectedLanguage": "en",
             "AppendTrailingSpace": true,
             "RecorderType": "mini",

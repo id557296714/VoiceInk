@@ -6,6 +6,7 @@ struct ModelSettingsView: View {
     @AppStorage("IsTextFormattingEnabled") private var isTextFormattingEnabled = true
     @AppStorage("IsVADEnabled") private var isVADEnabled = true
     @AppStorage("LowercaseTranscription") private var lowercaseTranscription = false
+    @AppStorage("RemoveTrailingPeriodForSingleSentence") private var removeTrailingPeriodForSingleSentence = false
     @AppStorage("AppendTrailingSpace") private var appendTrailingSpace = true
     @AppStorage("PrewarmModelOnWake") private var prewarmModelOnWake = true
     @State private var customPrompt: String = ""
@@ -64,6 +65,11 @@ struct ModelSettingsView: View {
 
                 Toggle(isOn: $lowercaseTranscription) {
                     Text("Lowercase")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $removeTrailingPeriodForSingleSentence) {
+                    Text("Remove trailing period")
                 }
                 .toggleStyle(.switch)
 
