@@ -25,6 +25,8 @@ enum AppDefaults {
             "RemoveFillerWords": true,
             "LowercaseTranscription": false,
             "LowercaseLivePreview": false,
+            "SergeiModeForPaste": false,
+            "SergeiModeForLivePreview": false,
             "RemoveTrailingPeriodForSingleSentence": false,
             "RemoveTrailingPeriodForMultipleSentences": false,
             "SelectedLanguage": "en",

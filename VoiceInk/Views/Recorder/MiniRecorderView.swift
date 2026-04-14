@@ -5,7 +5,6 @@ struct MiniRecorderView<S: RecorderStateProvider & ObservableObject>: View {
     @ObservedObject var recorder: Recorder
     @EnvironmentObject var windowManager: MiniWindowManager
     @EnvironmentObject private var enhancementService: AIEnhancementService
-    @AppStorage("LowercaseLivePreview") private var lowercaseLivePreview = false
 
     @State private var activePopover: ActivePopoverState = .none
 
@@ -23,7 +22,7 @@ struct MiniRecorderView<S: RecorderStateProvider & ObservableObject>: View {
     }
 
     private var livePreviewText: String {
-        lowercaseLivePreview ? stateProvider.partialTranscript.lowercased() : stateProvider.partialTranscript
+        PasteTextFormatter.formatForLivePreview(stateProvider.partialTranscript)
     }
 
     private var controlBar: some View {

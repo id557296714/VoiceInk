@@ -7,6 +7,8 @@ struct ModelSettingsView: View {
     @AppStorage("IsVADEnabled") private var isVADEnabled = true
     @AppStorage("LowercaseTranscription") private var lowercaseTranscription = false
     @AppStorage("LowercaseLivePreview") private var lowercaseLivePreview = false
+    @AppStorage("SergeiModeForPaste") private var sergeiModeForPaste = false
+    @AppStorage("SergeiModeForLivePreview") private var sergeiModeForLivePreview = false
     @AppStorage("RemoveTrailingPeriodForSingleSentence") private var removeTrailingPeriodForSingleSentence = false
     @AppStorage("RemoveTrailingPeriodForMultipleSentences") private var removeTrailingPeriodForMultipleSentences = false
     @AppStorage("AppendTrailingSpace") private var appendTrailingSpace = true
@@ -72,6 +74,16 @@ struct ModelSettingsView: View {
 
                 Toggle(isOn: $lowercaseLivePreview) {
                     Text("Live preview lowercase")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $sergeiModeForPaste) {
+                    Text("' in its (unpolished)")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $sergeiModeForLivePreview) {
+                    Text("Live preview ' in its (unpolished)")
                 }
                 .toggleStyle(.switch)
 
