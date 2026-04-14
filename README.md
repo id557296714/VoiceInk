@@ -22,6 +22,10 @@
 
 VoiceInk is a native macOS application that transcribes what you say to text almost instantly. You can find all the information and download the app from [here](https://tryvoiceink.com). 
 
+## This Fork Features
+
+- **Lowercase before paste** - more casual and natural text
+
 ![VoiceInk Mac App](https://github.com/user-attachments/assets/12367379-83e7-48a6-b52c-4488a6a04bba)
 
 After dedicating the past 5 months to developing this app, I've decided to open source it for the greater good. 
