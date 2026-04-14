@@ -175,14 +175,15 @@ class TranscriptionPipeline {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                let formattedTextToPaste = PasteTextFormatter.formatForPaste(textToPaste)
+
                 // Capture element while target field still has focus, before Cmd+V fires
                 let autoLearn = AutoLearnVocabularyService.shared
                 if let element = autoLearn.captureFocusedElement() {
-                    autoLearn.prepareMonitoring(pastedText: textToPaste, element: element, modelContext: self.modelContext)
+                    autoLearn.prepareMonitoring(pastedText: formattedTextToPaste, element: element, modelContext: self.modelContext)
                 }
 
-                let appendSpace = UserDefaults.standard.bool(forKey: "AppendTrailingSpace")
-                CursorPaster.pasteAtCursor(textToPaste + (appendSpace ? " " : ""))
+                CursorPaster.pasteAtCursor(formattedTextToPaste)
 
                 let powerMode = PowerModeManager.shared
                 if let activeConfig = powerMode.currentActiveConfiguration, activeConfig.autoSendKey.isEnabled {

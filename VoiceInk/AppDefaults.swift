@@ -23,6 +23,7 @@ enum AppDefaults {
             "IsTextFormattingEnabled": true,
             "IsVADEnabled": true,
             "RemoveFillerWords": true,
+            "LowercaseTranscription": false,
             "SelectedLanguage": "en",
             "AppendTrailingSpace": true,
             "RecorderType": "mini",

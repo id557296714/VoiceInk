@@ -66,7 +66,7 @@ class LastTranscriptionService: ObservableObject {
             return
         }
         
-        let textToPaste = lastTranscription.text
+        let textToPaste = PasteTextFormatter.formatForPaste(lastTranscription.text)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
             CursorPaster.pasteAtCursor(textToPaste)
@@ -94,7 +94,7 @@ class LastTranscriptionService: ObservableObject {
         }()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-            CursorPaster.pasteAtCursor(textToPaste)
+            CursorPaster.pasteAtCursor(PasteTextFormatter.formatForPaste(textToPaste))
         }
     }
     

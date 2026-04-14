@@ -5,6 +5,7 @@ struct ModelSettingsView: View {
     @AppStorage("SelectedLanguage") private var selectedLanguage: String = "en"
     @AppStorage("IsTextFormattingEnabled") private var isTextFormattingEnabled = true
     @AppStorage("IsVADEnabled") private var isVADEnabled = true
+    @AppStorage("LowercaseTranscription") private var lowercaseTranscription = false
     @AppStorage("AppendTrailingSpace") private var appendTrailingSpace = true
     @AppStorage("PrewarmModelOnWake") private var prewarmModelOnWake = true
     @State private var customPrompt: String = ""
@@ -58,6 +59,11 @@ struct ModelSettingsView: View {
                         Text("Automatic text formatting")
                         InfoTip("Apply intelligent text formatting to break large block of text into paragraphs.")
                     }
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $lowercaseTranscription) {
+                    Text("Lowercase")
                 }
                 .toggleStyle(.switch)
 
