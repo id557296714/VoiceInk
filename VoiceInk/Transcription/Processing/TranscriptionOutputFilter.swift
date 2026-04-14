@@ -30,13 +30,7 @@ struct TranscriptionOutputFilter {
 
         // Remove filler words (if enabled)
         if FillerWordManager.shared.isEnabled {
-            for fillerWord in FillerWordManager.shared.fillerWords {
-                let pattern = "\\b\(NSRegularExpression.escapedPattern(for: fillerWord))\\b[,.]?"
-                if let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) {
-                    let range = NSRange(filteredText.startIndex..., in: filteredText)
-                    filteredText = regex.stringByReplacingMatches(in: filteredText, options: [], range: range, withTemplate: "")
-                }
-            }
+            filteredText = removeFillerWords(from: filteredText)
         }
 
         // Clean whitespace
@@ -51,5 +45,20 @@ struct TranscriptionOutputFilter {
         }
 
         return filteredText
+    }
+
+    static func removeFillerWords(from text: String) -> String {
+        var filteredText = text
+
+        for fillerWord in FillerWordManager.shared.fillerWords {
+            let pattern = "\\b\(NSRegularExpression.escapedPattern(for: fillerWord))\\b[,.]?"
+            if let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) {
+                let range = NSRange(filteredText.startIndex..., in: filteredText)
+                filteredText = regex.stringByReplacingMatches(in: filteredText, options: [], range: range, withTemplate: "")
+            }
+        }
+
+        filteredText = filteredText.replacingOccurrences(of: #"\s{2,}"#, with: " ", options: .regularExpression)
+        return filteredText.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 } 

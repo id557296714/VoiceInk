@@ -23,6 +23,7 @@ enum AppDefaults {
             "IsTextFormattingEnabled": true,
             "IsVADEnabled": true,
             "RemoveFillerWords": true,
+            "RemoveFillerWordsLivePreview": false,
             "LowercaseTranscription": false,
             "LowercaseLivePreview": false,
             "SergeiModeForPaste": false,

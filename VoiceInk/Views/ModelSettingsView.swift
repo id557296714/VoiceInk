@@ -13,6 +13,7 @@ struct ModelSettingsView: View {
     @AppStorage("RemoveTrailingPeriodForMultipleSentences") private var removeTrailingPeriodForMultipleSentences = false
     @AppStorage("RemoveTrailingPeriodForSingleSentenceLivePreview") private var removeTrailingPeriodForSingleSentenceLivePreview = false
     @AppStorage("RemoveTrailingPeriodForMultipleSentencesLivePreview") private var removeTrailingPeriodForMultipleSentencesLivePreview = false
+    @AppStorage("RemoveFillerWordsLivePreview") private var removeFillerWordsLivePreview = false
     @AppStorage("AppendTrailingSpace") private var appendTrailingSpace = true
     @AppStorage("PrewarmModelOnWake") private var prewarmModelOnWake = true
     @State private var customPrompt: String = ""
@@ -126,6 +127,11 @@ struct ModelSettingsView: View {
 
                 Toggle(isOn: $removeTrailingPeriodForMultipleSentencesLivePreview) {
                     Text("Remove last period in multi-sentence text")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $removeFillerWordsLivePreview) {
+                    Text("Remove filler words")
                 }
                 .toggleStyle(.switch)
             } header: {

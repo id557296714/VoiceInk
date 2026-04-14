@@ -51,6 +51,10 @@ enum PasteTextFormatter {
             formattedText = removeTrailingPeriodIfMultipleSentences(formattedText)
         }
 
+        if UserDefaults.standard.bool(forKey: "RemoveFillerWordsLivePreview") {
+            formattedText = TranscriptionOutputFilter.removeFillerWords(from: formattedText)
+        }
+
         return formattedText
     }
 
