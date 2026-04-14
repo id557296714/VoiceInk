@@ -6,6 +6,7 @@ struct ModelSettingsView: View {
     @AppStorage("IsTextFormattingEnabled") private var isTextFormattingEnabled = true
     @AppStorage("IsVADEnabled") private var isVADEnabled = true
     @AppStorage("LowercaseTranscription") private var lowercaseTranscription = false
+    @AppStorage("LowercaseLivePreview") private var lowercaseLivePreview = false
     @AppStorage("RemoveTrailingPeriodForSingleSentence") private var removeTrailingPeriodForSingleSentence = false
     @AppStorage("RemoveTrailingPeriodForMultipleSentences") private var removeTrailingPeriodForMultipleSentences = false
     @AppStorage("AppendTrailingSpace") private var appendTrailingSpace = true
@@ -66,6 +67,11 @@ struct ModelSettingsView: View {
 
                 Toggle(isOn: $lowercaseTranscription) {
                     Text("Lowercase")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $lowercaseLivePreview) {
+                    Text("Live preview lowercase")
                 }
                 .toggleStyle(.switch)
 

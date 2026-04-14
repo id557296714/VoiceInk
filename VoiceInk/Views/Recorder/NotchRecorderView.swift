@@ -5,6 +5,7 @@ struct NotchRecorderView<S: RecorderStateProvider & ObservableObject>: View {
     @ObservedObject var recorder: Recorder
     @EnvironmentObject var windowManager: NotchWindowManager
     @EnvironmentObject private var enhancementService: AIEnhancementService
+    @AppStorage("LowercaseLivePreview") private var lowercaseLivePreview = false
     @ObservedObject private var powerModeManager = PowerModeManager.shared
     @State private var activePopover: ActivePopoverState = .none
 
@@ -14,6 +15,10 @@ struct NotchRecorderView<S: RecorderStateProvider & ObservableObject>: View {
         case collapsed
         case active
         case liveText
+    }
+
+    private var livePreviewText: String {
+        lowercaseLivePreview ? stateProvider.partialTranscript.lowercased() : stateProvider.partialTranscript
     }
 
     private var displayState: DisplayState {
@@ -158,7 +163,7 @@ struct NotchRecorderView<S: RecorderStateProvider & ObservableObject>: View {
         VStack(spacing: 0) {
             if displayState == .liveText {
                 Divider().background(Color.white.opacity(0.15))
-                LiveTranscriptView(text: stateProvider.partialTranscript)
+                LiveTranscriptView(text: livePreviewText)
                     .padding(.horizontal, 8)
             }
         }

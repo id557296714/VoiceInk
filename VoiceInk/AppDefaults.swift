@@ -24,6 +24,7 @@ enum AppDefaults {
             "IsVADEnabled": true,
             "RemoveFillerWords": true,
             "LowercaseTranscription": false,
+            "LowercaseLivePreview": false,
             "RemoveTrailingPeriodForSingleSentence": false,
             "RemoveTrailingPeriodForMultipleSentences": false,
             "SelectedLanguage": "en",

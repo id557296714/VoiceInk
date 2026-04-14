@@ -5,6 +5,7 @@ struct MiniRecorderView<S: RecorderStateProvider & ObservableObject>: View {
     @ObservedObject var recorder: Recorder
     @EnvironmentObject var windowManager: MiniWindowManager
     @EnvironmentObject private var enhancementService: AIEnhancementService
+    @AppStorage("LowercaseLivePreview") private var lowercaseLivePreview = false
 
     @State private var activePopover: ActivePopoverState = .none
 
@@ -19,6 +20,10 @@ struct MiniRecorderView<S: RecorderStateProvider & ObservableObject>: View {
     // true when live transcript is streaming in during recording
     private var hasLiveTranscript: Bool {
         stateProvider.recordingState == .recording && !stateProvider.partialTranscript.isEmpty
+    }
+
+    private var livePreviewText: String {
+        lowercaseLivePreview ? stateProvider.partialTranscript.lowercased() : stateProvider.partialTranscript
     }
 
     private var controlBar: some View {
@@ -52,7 +57,7 @@ struct MiniRecorderView<S: RecorderStateProvider & ObservableObject>: View {
     private var transcriptSection: some View {
         VStack(spacing: 0) {
             if hasLiveTranscript {
-                LiveTranscriptView(text: stateProvider.partialTranscript)
+                LiveTranscriptView(text: livePreviewText)
                 Divider().background(Color.white.opacity(0.15))
             }
         }
