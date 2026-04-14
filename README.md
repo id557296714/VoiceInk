@@ -1,6 +1,9 @@
 ## This Fork Features
 
-- **Lowercase before paste** - more casual and natural text
+- **Lowercase before paste** - more casual and natural text to paste
+- Planned
+-  **Pop up UI changes**
+-  **Pop up inline edit before paste?**
 
 ---
 
