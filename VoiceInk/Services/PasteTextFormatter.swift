@@ -43,6 +43,14 @@ enum PasteTextFormatter {
             formattedText = applySergeiMode(formattedText)
         }
 
+        if UserDefaults.standard.bool(forKey: "RemoveTrailingPeriodForSingleSentenceLivePreview") {
+            formattedText = removeTrailingPeriodIfSingleSentence(formattedText)
+        }
+
+        if UserDefaults.standard.bool(forKey: "RemoveTrailingPeriodForMultipleSentencesLivePreview") {
+            formattedText = removeTrailingPeriodIfMultipleSentences(formattedText)
+        }
+
         return formattedText
     }
 

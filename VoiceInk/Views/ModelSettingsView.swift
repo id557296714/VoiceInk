@@ -11,6 +11,8 @@ struct ModelSettingsView: View {
     @AppStorage("SergeiModeForLivePreview") private var sergeiModeForLivePreview = false
     @AppStorage("RemoveTrailingPeriodForSingleSentence") private var removeTrailingPeriodForSingleSentence = false
     @AppStorage("RemoveTrailingPeriodForMultipleSentences") private var removeTrailingPeriodForMultipleSentences = false
+    @AppStorage("RemoveTrailingPeriodForSingleSentenceLivePreview") private var removeTrailingPeriodForSingleSentenceLivePreview = false
+    @AppStorage("RemoveTrailingPeriodForMultipleSentencesLivePreview") private var removeTrailingPeriodForMultipleSentencesLivePreview = false
     @AppStorage("AppendTrailingSpace") private var appendTrailingSpace = true
     @AppStorage("PrewarmModelOnWake") private var prewarmModelOnWake = true
     @State private var customPrompt: String = ""
@@ -92,8 +94,18 @@ struct ModelSettingsView: View {
                 }
                 .toggleStyle(.switch)
 
+                Toggle(isOn: $removeTrailingPeriodForSingleSentenceLivePreview) {
+                    Text("Live preview remove trailing period")
+                }
+                .toggleStyle(.switch)
+
                 Toggle(isOn: $removeTrailingPeriodForMultipleSentences) {
                     Text("Remove last period in multi-sentence text")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $removeTrailingPeriodForMultipleSentencesLivePreview) {
+                    Text("Live preview remove last period in multi-sentence text")
                 }
                 .toggleStyle(.switch)
 

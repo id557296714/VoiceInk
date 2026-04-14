@@ -29,6 +29,8 @@ enum AppDefaults {
             "SergeiModeForLivePreview": false,
             "RemoveTrailingPeriodForSingleSentence": false,
             "RemoveTrailingPeriodForMultipleSentences": false,
+            "RemoveTrailingPeriodForSingleSentenceLivePreview": false,
+            "RemoveTrailingPeriodForMultipleSentencesLivePreview": false,
             "SelectedLanguage": "en",
             "AppendTrailingSpace": true,
             "RecorderType": "mini",
