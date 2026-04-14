@@ -12,6 +12,10 @@ enum PasteTextFormatter {
             formattedText = removeTrailingPeriodIfSingleSentence(formattedText)
         }
 
+        if UserDefaults.standard.bool(forKey: "RemoveTrailingPeriodForMultipleSentences") {
+            formattedText = removeTrailingPeriodIfMultipleSentences(formattedText)
+        }
+
         if UserDefaults.standard.bool(forKey: "AppendTrailingSpace") {
             formattedText += " "
         }
@@ -33,6 +37,32 @@ enum PasteTextFormatter {
         }
 
         guard sentenceEnderCount == 1 else {
+            return text
+        }
+
+        guard let periodIndex = text.lastIndex(of: ".") else {
+            return text
+        }
+
+        var updatedText = text
+        updatedText.remove(at: periodIndex)
+        return updatedText
+    }
+
+    private static func removeTrailingPeriodIfMultipleSentences(_ text: String) -> String {
+        let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard trimmedText.hasSuffix(".") else {
+            return text
+        }
+
+        let sentenceEnderCount = trimmedText.reduce(into: 0) { count, character in
+            if character == "." || character == "!" || character == "?" {
+                count += 1
+            }
+        }
+
+        guard sentenceEnderCount > 1 else {
             return text
         }
 

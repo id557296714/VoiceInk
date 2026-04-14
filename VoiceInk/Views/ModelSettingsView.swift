@@ -7,6 +7,7 @@ struct ModelSettingsView: View {
     @AppStorage("IsVADEnabled") private var isVADEnabled = true
     @AppStorage("LowercaseTranscription") private var lowercaseTranscription = false
     @AppStorage("RemoveTrailingPeriodForSingleSentence") private var removeTrailingPeriodForSingleSentence = false
+    @AppStorage("RemoveTrailingPeriodForMultipleSentences") private var removeTrailingPeriodForMultipleSentences = false
     @AppStorage("AppendTrailingSpace") private var appendTrailingSpace = true
     @AppStorage("PrewarmModelOnWake") private var prewarmModelOnWake = true
     @State private var customPrompt: String = ""
@@ -70,6 +71,11 @@ struct ModelSettingsView: View {
 
                 Toggle(isOn: $removeTrailingPeriodForSingleSentence) {
                     Text("Remove trailing period")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $removeTrailingPeriodForMultipleSentences) {
+                    Text("Remove last period in multi-sentence text")
                 }
                 .toggleStyle(.switch)
 

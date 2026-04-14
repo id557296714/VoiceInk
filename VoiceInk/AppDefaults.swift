@@ -25,6 +25,7 @@ enum AppDefaults {
             "RemoveFillerWords": true,
             "LowercaseTranscription": false,
             "RemoveTrailingPeriodForSingleSentence": false,
+            "RemoveTrailingPeriodForMultipleSentences": false,
             "SelectedLanguage": "en",
             "AppendTrailingSpace": true,
             "RecorderType": "mini",
