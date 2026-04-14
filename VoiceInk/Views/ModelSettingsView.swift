@@ -74,18 +74,8 @@ struct ModelSettingsView: View {
                 }
                 .toggleStyle(.switch)
 
-                Toggle(isOn: $lowercaseLivePreview) {
-                    Text("Live preview lowercase")
-                }
-                .toggleStyle(.switch)
-
                 Toggle(isOn: $sergeiModeForPaste) {
                     Text("' in its (unpolished)")
-                }
-                .toggleStyle(.switch)
-
-                Toggle(isOn: $sergeiModeForLivePreview) {
-                    Text("Live preview ' in its (unpolished)")
                 }
                 .toggleStyle(.switch)
 
@@ -94,18 +84,8 @@ struct ModelSettingsView: View {
                 }
                 .toggleStyle(.switch)
 
-                Toggle(isOn: $removeTrailingPeriodForSingleSentenceLivePreview) {
-                    Text("Live preview remove trailing period")
-                }
-                .toggleStyle(.switch)
-
                 Toggle(isOn: $removeTrailingPeriodForMultipleSentences) {
                     Text("Remove last period in multi-sentence text")
-                }
-                .toggleStyle(.switch)
-
-                Toggle(isOn: $removeTrailingPeriodForMultipleSentencesLivePreview) {
-                    Text("Live preview remove last period in multi-sentence text")
                 }
                 .toggleStyle(.switch)
 
@@ -126,6 +106,30 @@ struct ModelSettingsView: View {
                 .toggleStyle(.switch)
             } header: {
                 Text("Transcription")
+            }
+
+            Section {
+                Toggle(isOn: $lowercaseLivePreview) {
+                    Text("Lowercase")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $sergeiModeForLivePreview) {
+                    Text("' in its (unpolished)")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $removeTrailingPeriodForSingleSentenceLivePreview) {
+                    Text("Remove trailing period")
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $removeTrailingPeriodForMultipleSentencesLivePreview) {
+                    Text("Remove last period in multi-sentence text")
+                }
+                .toggleStyle(.switch)
+            } header: {
+                Text("Live Preview")
             }
 
             Section {
