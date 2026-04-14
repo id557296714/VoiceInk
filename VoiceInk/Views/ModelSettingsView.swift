@@ -69,6 +69,22 @@ struct ModelSettingsView: View {
                 }
                 .toggleStyle(.switch)
 
+                Toggle(isOn: $isVADEnabled) {
+                    HStack(spacing: 4) {
+                        Text("Voice Activity Detection (VAD)")
+                        InfoTip("Detect speech segments and filter out silence to improve accuracy of local models.")
+                    }
+                }
+                .toggleStyle(.switch)
+
+                Toggle(isOn: $prewarmModelOnWake) {
+                    HStack(spacing: 4) {
+                        Text("Prewarm model (Experimental)")
+                        InfoTip("Turn this on if transcriptions with local models are taking longer than expected. Runs silent background transcription on app launch and wake to trigger optimization.")
+                    }
+                }
+                .toggleStyle(.switch)
+
                 Toggle(isOn: $lowercaseTranscription) {
                     Text("Lowercase")
                 }
@@ -86,22 +102,6 @@ struct ModelSettingsView: View {
 
                 Toggle(isOn: $removeTrailingPeriodForMultipleSentences) {
                     Text("Remove last period in multi-sentence text")
-                }
-                .toggleStyle(.switch)
-
-                Toggle(isOn: $isVADEnabled) {
-                    HStack(spacing: 4) {
-                        Text("Voice Activity Detection (VAD)")
-                        InfoTip("Detect speech segments and filter out silence to improve accuracy of local models.")
-                    }
-                }
-                .toggleStyle(.switch)
-
-                Toggle(isOn: $prewarmModelOnWake) {
-                    HStack(spacing: 4) {
-                        Text("Prewarm model (Experimental)")
-                        InfoTip("Turn this on if transcriptions with local models are taking longer than expected. Runs silent background transcription on app launch and wake to trigger optimization.")
-                    }
                 }
                 .toggleStyle(.switch)
             } header: {
